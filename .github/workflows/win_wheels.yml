@@ -40,7 +40,7 @@ jobs:
         python -m pip install 'numpy<2'
 
     - if: matrix.numpy == 'dev'
-      run:
+      run: |
         python -m pip install numpy --only-binary ':all:' \
            --pre --extra-index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple
 
