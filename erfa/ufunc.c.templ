@@ -598,12 +598,12 @@ static int ErfaUFuncTypeResolver(PyUFuncObject *ufunc,
             goto fail;
         }
         /* Copy the types into an int array for matching */
-        int *types_array = new int[NPY_MAXARGS];
+        int* types_array = malloc(NPY_MAXARGS*sizeof(int));
         for (j = 0; j < ufunc->nargs; ++j) {
             types_array[j] = ufunc->types[j];
         }
         types = types_array;
-        delete[] types_array;
+        free(types_array);
         dtypes = NULL;
     }
     switch (ufunc_loop_matches(ufunc, operands, casting, types, dtypes)) {
