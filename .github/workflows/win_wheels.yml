@@ -14,7 +14,6 @@ jobs:
     name: w/ numpy ${{ matrix.numpy }}
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: true
       matrix:
         os: [windows-latest]
         python: ['3.11']
