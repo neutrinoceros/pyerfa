@@ -941,6 +941,7 @@ PyMODINIT_FUNC PyInit_ufunc(void)
     status = PyUFunc_RegisterLoopForDescr(
         ufunc, {{ func.user_dtype }},
         ufunc_loop_{{ func.pyname }}, dtypes, NULL);
+    free(dtypes);
     if(status != 0){
         Py_DECREF(ufunc);
         goto fail;
