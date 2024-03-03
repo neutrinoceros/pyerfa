@@ -754,7 +754,7 @@ PyMODINIT_FUNC PyInit_ufunc(void)
     PyArray_Descr *dt_sign = NULL, *dt_type = NULL;
     PyArray_Descr *dt_eraASTROM = NULL, *dt_eraLDBODY = NULL;
 
-    PyArray_Descr *dtypes = malloc(NPY_MAXARGS*sizeof(PyArray_Descr));
+    PyArray_Descr *dtypes = malloc(NPY_MAXARGS*sizeof(*dtypes));
     /* ufuncs and their definitions */
     int status;
     PyUFuncObject *ufunc;
