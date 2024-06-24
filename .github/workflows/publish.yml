@@ -32,7 +32,7 @@ jobs:
         CIBW_BUILD_FRONTEND: '${{ ((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && 'pip; args: --no-build-isolation') || 'build' }}'
         CIBW_PRERELEASE_PYTHONS:    '${{ ((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request')) }}'
         CIBW_FREE_THREADED_SUPPORT: '${{ ((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request')) }}'
-        PIP_PRE: '${{ ((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request')) }}'
+        CIBW_ENVIRONMENT: '${{ ((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'Build all wheels')) && 'PIP_PRE=1 PIP_EXTRA_INDEX_URL=https://pypi.anaconda.org/scientific-python-nightly-wheels/simple') || '' }}'
 
       test_extras: test
       test_command: pytest --pyargs erfa
