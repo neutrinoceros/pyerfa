@@ -32,6 +32,7 @@ jobs:
         CIBW_BUILD_FRONTEND: '${{ ((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request') && 'pip; args: --no-build-isolation') || 'build' }}'
         CIBW_PRERELEASE_PYTHONS:    '${{ ((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request')) }}'
         CIBW_FREE_THREADED_SUPPORT: '${{ ((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request')) }}'
+        PIP_PRE: '${{ ((github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request')) }}'
 
       test_extras: test
       test_command: pytest --pyargs erfa
